@@ -78,18 +78,20 @@
 </div> -->
 
 <div class="zoomer">
-  
-    <div class="images">
-      <img src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Group_384.png?v=1677836846" class="mae-head" style="width: 70%;" alt=""><br><br>
-     <img data-speed="0.5" src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth.png?v=1677837703" id="myImg" class="mug" >
+  <img src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/2_background.png?v=1677836247" style="width: 100%;  position: absolute; margin: auto; top:0; z-index: 0;" class="mug-background" id="myImg" alt="" data-speed="0.5" >
+  <img src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Group_384.png?v=1677836846" style="width: 50%;  position: absolute; margin: auto; top:50px; z-index: 0;" class="mug-background" id="myImg" alt="" data-speed="0.5" >
+    <div class="images" style="position: relative;">
+      <img src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Group_383.png?v=1677878363" class="mae-head" style="width: 40%;" alt=""><br><br>
+    
+     <img data-speed="0.5" src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth.png?v=1677837703" style="z-index:2;" id="myImgs" class="mug" >
 
       <div class="button_color">
         <button  onClick='changeImage()' class="btn-colorm" style="background-color: #C6EEDA;"></button>
         <button  onClick='changeImage1()' class="btn-colorm"style="background-color:#C96B52;"></button>
-        <button  onClick='changeImage()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
-        <button  onClick='changeImage1()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
-        <button  onClick='changeImage()'class="btn-colorm" style="background-color: #2D2841;"></button>
-        <button  onClick='changeImage1()' class="btn-colorm"style="background-color: #CBD8DC;"></button>
+        <button  onClick='changeImage2()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
+        <button  onClick='changeImage3()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
+        <button  onClick='changeImage4()'class="btn-colorm" style="background-color: #2D2841;"></button>
+        <button  onClick='changeImage5()' class="btn-colorm"style="background-color: #CBD8DC;"></button>
       </div>
       <div class="scroll-btn-cont">
         <button class="scroll-btn">Add to cart</button>
@@ -118,13 +120,13 @@ images.forEach((image, i) => {
      },
     {
       scale: 0.7,
-      y:10,
+      y:50,
       ease: "none",
       force3D: true,
       scrollTrigger: {
         pin:jQuery(image).parent(),
         trigger: jQuery(image).parent(),
-        start: "top top",
+        start: "top top", 
         end: "bottom top",
         //pinType: isTouch ? "fixed" : "transform",
         scrub: 0.5,
@@ -140,19 +142,62 @@ gsap.to(".mae-head", {
   scrollTrigger:{
     trigger: ".mae-head", 
     start:"20px 10%", 
-    markers:true, 
+    // markers:true, 
     toggleActions:"restart  reverse "
   }, 
   opacity:0
   
 });
 
-const img = document.getElementById('myImg');
+
+gsap.fromTo(
+  ".mug-background", {
+  opacity:0,
+  duration:3
+},
+  {
+ 
+    opacity:1,
+    duration:0.5,
+
+  scrollTrigger:{
+    trigger: ".mug-background", 
+    start:"center top", 
+    end:"50px 80%",
+    markers:true, 
+    ease: "none",
+    force3D: true,
+    toggleActions:"restart  reverse "
+  }
+ 
+  
+});
+
+const mug = document.getElementById('myImg');
+const img = document.getElementById('myImgs');
 
 function changeImage(){
-img.src =  'https://cdn.shopify.com/s/files/1/0561/3594/2276/files/Sequence_01_2.gif?v=1675926590';  
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Mask_Group_27.png?v=1677878176';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth_31212274-aa25-47a5-a3d2-9cd21ae71f40.png?v=1677877898';
 }
 function changeImage1(){
-    img.src = 'https://cdn.shopify.com/s/files/1/0561/3594/2276/files/Sequence_02.gif?v=1675951805';
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/1_Background.png?v=1677836246';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth-3.png?v=1677877897';
+}
+function changeImage2(){
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Mask_Group_21.png?v=1677878176';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth-3.png?v=1677877897';
+}
+function changeImage3(){
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Mask_Group_50.png?v=1677878176';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth-1.png?v=1677877897';
+}
+function changeImage4(){
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/1_Background.png?v=1677836246';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth-4.png?v=1677877897';
+}
+function changeImage5(){
+mug.src =  'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/1_Background.png?v=1677836246';  
+img.src= 'https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth-2.png?v=1677877898';
 }
 </script>
