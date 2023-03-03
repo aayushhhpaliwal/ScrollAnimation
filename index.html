@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<style>
+  
+.zoomer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;  height: 100vh;
+  overflow: hidden;
+  background-color: #DCC2A4;
+}
+.images {
+  text-align: center;
+}
+
+.btn-colorm{
+  width: 30px; 
+  height:30px; 
+  margin: 10px; 
+  margin-top:50px;
+  border:none;
+  border-radius: 50%;
+}
+.btn-colorm:hover{
+  width: 35px;
+  height:35px; 
+}
+.zoomer .wrapper .images {
+  max-width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /*transform: scale(0, 0);*/
+  z-index: -1;
+}
+.scroll-btn-cont{
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  margin-top: 30px;
+  width: 100%;
+}
+.scroll-btn1 {
+  color: #ffffff;
+    cursor: pointer;
+    border-color: #707654;
+    background: #707654 !important;
+    text-transform: uppercase;
+    border-radius: 40px;
+    font-weight: 400 !important;
+    font-size: 12px;
+    padding: 12px 20px !important;
+    width: 150px;
+    font-family: 'Roboto';
+}
+.scroll-btn{
+  background-color: transparent !important;
+    border: 1px solid;
+    cursor: pointer;
+    border-color: #707654;
+    color: #707654 !important;
+    font-size: 12px;
+    padding: 12px 20px !important;
+    text-transform: uppercase;
+    border-radius: 40px;
+    font-weight: bold;
+    width: 150px;
+
+}
+</style>
+</head>
+<body>
+
+<!-- <div class="Mae_head">
+
+</div> -->
+
+<div class="zoomer">
+  
+    <div class="images">
+      <img src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Group_384.png?v=1677836846" class="mae-head" style="width: 70%;" alt=""><br><br>
+     <img data-speed="0.5" src="https://cdn.shopify.com/s/files/1/0667/8318/3163/files/Elusive_Earth.png?v=1677837703" id="myImg" class="mug" >
+
+      <div class="button_color">
+        <button  onClick='changeImage()' class="btn-colorm" style="background-color: #C6EEDA;"></button>
+        <button  onClick='changeImage1()' class="btn-colorm"style="background-color:#C96B52;"></button>
+        <button  onClick='changeImage()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
+        <button  onClick='changeImage1()'class="btn-colorm" style="background-color: #BE8E6A;"></button>
+        <button  onClick='changeImage()'class="btn-colorm" style="background-color: #2D2841;"></button>
+        <button  onClick='changeImage1()' class="btn-colorm"style="background-color: #CBD8DC;"></button>
+      </div>
+      <div class="scroll-btn-cont">
+        <button class="scroll-btn">Add to cart</button>
+        <button class="scroll-btn1">Buy Now</button></div>
+    </div>
+    <div class="text" data-speed="0.1">
+         </div>
+        
+  </div>
+  
+
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script>
+  
+var images = gsap.utils.toArray(".zoomer .images");
+images.forEach((image, i) => {
+  gsap.fromTo(
+    image,
+    { scale: 2, 
+      y:500
+     },
+    {
+      scale: 0.7,
+      y:10,
+      ease: "none",
+      force3D: true,
+      scrollTrigger: {
+        pin:jQuery(image).parent(),
+        trigger: jQuery(image).parent(),
+        start: "top top",
+        end: "bottom top",
+        //pinType: isTouch ? "fixed" : "transform",
+        scrub: 0.5,
+        // markers: true
+      }
+    }
+  );
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".mae-head", {
+  scrollTrigger:{
+    trigger: ".mae-head", 
+    start:"20px 10%", 
+    markers:true, 
+    toggleActions:"restart  reverse "
+  }, 
+  opacity:0
+  
+});
+
+const img = document.getElementById('myImg');
+
+function changeImage(){
+img.src =  'https://cdn.shopify.com/s/files/1/0561/3594/2276/files/Sequence_01_2.gif?v=1675926590';  
+}
+function changeImage1(){
+    img.src = 'https://cdn.shopify.com/s/files/1/0561/3594/2276/files/Sequence_02.gif?v=1675951805';
+}
+</script>
